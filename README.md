@@ -1,12 +1,8 @@
-✔️ 
+✔️ Autotrade
 
-✔️ 
+✔️ Auto tap
 
-✔️ 
-
-✔️ 
-
-✔️ 
+✔️ Auto task
 
 # 🛠️ Instructions:
 
