@@ -5,11 +5,29 @@ import random
 from datetime import datetime
 import urllib.parse
 import cloudscraper
-from colorama import Fore, init
+from colorama import Fore, Style, init
 from dateutil import parser
 from dateutil.tz import tzutc
+from pyfiglet import Figlet
 
 init(autoreset=True)
+
+def rgb_to_ansi(r, g, b):
+    return f"\033[38;2;{r};{g};{b}m"
+
+def interpolate_color(start_color, end_color, factor: float):
+    return (
+        int(start_color[0] + (end_color[0] - start_color[0]) * factor),
+        int(start_color[1] + (end_color[1] - start_color[1]) * factor),
+        int(start_color[2] + (end_color[2] - start_color[2]) * factor),
+    )
+
+def print_gradient_text(text, start_color, end_color):
+    for i, char in enumerate(text):
+        factor = i / len(text)
+        r, g, b = interpolate_color(start_color, end_color, factor)
+        print(rgb_to_ansi(r, g, b) + char, end="")
+    print(Style.RESET_ALL)  # Reset colors after the text
 
 class VooiDC:
     def __init__(self):
@@ -30,7 +48,20 @@ class VooiDC:
         }
         self.scraper = cloudscraper.create_scraper()
         self.access_token = None
-
+    start_color = (230, 230, 250)  # Lavender color for lighter purple
+    end_color = (128, 0, 128)      # Purple
+    def display_banner():
+        custom_fig = Figlet(font='slant')
+        if os.name == "nt":
+            custom_fig = Figlet(font='Stforek')
+        os.system("title PUTICOOL BOT" if os.name == "nt" else "clear")
+        os.system("cls" if os.name == "nt" else "clear")
+    
+        print('')
+        print_gradient_text(custom_fig.renderText('PUTICOOL'), VooiDC.start_color, VooiDC.end_color)
+        print(f"{Fore.GREEN}[+] Welcome & Enjoy Sir !{Fore.RESET}")
+        print(f"{Fore.YELLOW}[+] Error? PM Telegram [https://t.me/NothingYub]{Fore.RESET}")
+        print('')
     def get_headers(self):
         headers = self.base_headers.copy()
         if self.access_token:
@@ -313,6 +344,7 @@ class VooiDC:
             self.countdown(10 * 60)
 
 if __name__ == "__main__":
+    VooiDC.display_banner()
     client = VooiDC()
     try:
         client.main()
