@@ -1,3 +1,6 @@
+
+![photo_2024-10-05_01-33-18](https://github.com/user-attachments/assets/d136bd65-d78a-49db-b141-7cb29e098c3c)
+
 ✔️ Autotrade
 
 ✔️ Auto tap
