@@ -129,7 +129,6 @@ class VooiDC:
             else:
                 return None
         except Exception as e:
-            self.log(f"Error checking autotrade: {str(e)}", 'error')
             return None
 
     def start_autotrade(self):
@@ -252,8 +251,7 @@ class VooiDC:
 
             virt_points = 0
             if virt_points_limit > 0:
-                virt_points = random.randint(max(1, int(virt_points_limit * 0.5)), int(virt_points_limit * 0.8))
-                virt_points = virt_points - (virt_points % 1)
+                virt_points = virt_points_limit
 
             result = self.finish_tapping_session(session_data['sessionId'], virt_money, virt_points)
             if result:
