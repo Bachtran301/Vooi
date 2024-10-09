@@ -31,7 +31,7 @@ class VooiDC:
     def __init__(self):
         self.base_headers = {
             "Accept": "application/json, text/plain, */*",
-            "Accept-Encoding": "gzip, deflate, br",
+            #"Accept-Encoding": "gzip, deflate, br",
             "Accept-Language": "vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5",
             "Content-Type": "application/json",
             "Origin": "https://app.tg.vooi.io",
